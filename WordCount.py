@@ -5,6 +5,7 @@ import functools
 
 s = sublime.load_settings('WordCount.sublime-settings')
 s.add_on_change('enable_live_count', lambda:Object().reload_prefs())
+s.add_on_change('enable_readtime', lambda:Object().reload_prefs())
 
 class Object:
 	view              = False
@@ -14,9 +15,11 @@ class Object:
 	elapsed_time      = 0.4
 	running           = False
 	enable_live_count = s.get('enable_live_count', True)
+	enable_readtime   = s.get('enable_readtime', True)
 
 	def reload_prefs(self):
 		Object.enable_live_count = s.get('enable_live_count', True)
+		Object.enable_readtime = s.get('enable_readtime', True)
 
 class WordCount(sublime_plugin.EventListener):
 
@@ -63,19 +66,28 @@ class WordCount(sublime_plugin.EventListener):
 				self.guess_view()
 
 	def display(self, view, word_count, on_selection):
+		m = int(word_count / 200)
+		s = int(word_count % 200 / (200 / 60))
+
+		# Estimated Reading Time
+		if Object.enable_readtime and s >= 1:
+			readTime = " , ~ %dm, %ds reading time" % (m, s)
+		else:
+			readTime = ""
+
 		if word_count == 0:
 			view.set_status('No words')
 		elif on_selection:
 			if word_count == 1:
 				view.set_status('WordCount', "1 Word selected")
 			else:
-				view.set_status('WordCount', "%s Words selected" % (word_count))
+				view.set_status('WordCount', "%s Words selected%s" % (word_count, readTime))
 		else:
 			if word_count == 1:
 				view.set_status('WordCount', "1 Word")
 			else:
-				view.set_status('WordCount', "%s Words" % (word_count))
-				
+				view.set_status('WordCount', "%s Words%s" % (word_count, readTime))
+
 class WordCountThread(threading.Thread):
 
 	def __init__(self, view, content, on_selection):
