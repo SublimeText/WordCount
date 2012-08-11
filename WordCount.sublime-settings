@@ -7,5 +7,8 @@
 	"enable_line_word_count": false,
 	"enable_line_char_count": false,
 
+	"enable_word_count": true,
+	"enable_char_count": false,
+	
 	"whitelist_syntaxes": []
 }
