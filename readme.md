@@ -39,7 +39,15 @@ Install this repository automatically via "Package Control" http://wbond.net/sub
 
  - `enable_line_char_count` : false
 
-		Display the count of words found on current line.
+		Display the count of characters found on current line.
+
+ - `enable_word_count` : true
+
+		Display the word count for entire file.
+
+ - `enable_char_count` : false
+
+		Display the character count for entire file.
 
 ## Inspiration
 
