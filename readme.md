@@ -2,12 +2,10 @@
 
 ## Installation
 
-1. Fallow the instruction on [https://sublime.wbond.net/installation](https://sublime.wbond.net/installation) to install [Package Control 2+](https://sublime.wbond.net/installation).
-2. In Sublime Text, press `ctrl+shift+p` (Win, Linux) or `cmd+shift+p` (OS X) to open *Package Control*.
-3. Choose `Package Control: Add Repository`.
-4. Paste [https://github.com/SublimeText/WordCount/](#) into the input box at the bottom.
-5. Open *Package Control* again, choose `Package Control: Install Package`.
-6. This should work! Enjoy.
+1. If you don't have it already, follow the instructions on [https://sublime.wbond.net/installation](https://sublime.wbond.net/installation) to install Package Control 2+.
+2. In Sublime Text, press <kbd>Ctrl+Shift+P</kbd> (Win, Linux) or <kbd>⌘⇧p</kbd> (OS X) to open the command palette.
+3. Choose `Package Control: Install Package`.
+4. Select **WordCount** when avaliable.
 
 ## Description
 
