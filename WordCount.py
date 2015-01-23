@@ -215,7 +215,7 @@ class WordCountThread(threading.Thread):
 
 		if Pref.enable_line_char_count:
 			if Pref.char_ignore_whitespace:
-				self.chars_in_line = len(''.join(self.content_line.split()))
+				self.chars_in_line = sum(len(s) for s in self.content_line.split())
 			else:
 				self.chars_in_line = len(self.content_line)
 
